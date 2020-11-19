@@ -18,7 +18,6 @@ steps:
   inputs:
     script: |
       ls -la $(Build.SourcesDirectory)
-      ls -la $(Build.SourcesDirectory)/src
 
 - task: Cache@2
   inputs:
@@ -28,16 +27,11 @@ steps:
 - task: Cache@2
   inputs:
     key: 'npm | "$(Agent.OS)"'
-    path: $(Build.SourcesDirectory)/src/node_modules
+    path: $(Build.SourcesDirectory)/node_modules
     restoreKeys: 'yarn | "$(Agent.OS)"'
 
-
 - task: CmdLine@2
-  inputs:
-    script: |
-      pwd
-      du -h -d 1
-- task: CmdLine@2
+  displayName: NPM INstall
   inputs:
     script: 'npm install'
 
