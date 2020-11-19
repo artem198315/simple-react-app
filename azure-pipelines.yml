@@ -16,9 +16,9 @@ steps:
     checkLatest: true
 - task: Cache@2
   inputs:
-    key: 'yarn|$(os.Agent)|yarn.lock'
+    key: 'yarn | "$(Agent.OS)" | yarn.lock'
     path: '$(pipeline.workspace)/.yarn'
-    restoreKeys: 'yarn|$(os.Agent)'
+    restoreKeys: 'yarn | "$(Agent.OS)"'
 
 - task: CmdLine@2
   inputs:
