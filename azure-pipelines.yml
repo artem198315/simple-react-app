@@ -17,9 +17,8 @@ steps:
 - task: CmdLine@2
   inputs:
     script: |
-      pwd
-      ls -lah
       ls -la $(Build.SourcesDirectory)
+      ls -la $(Build.SourcesDirectory)/src
 
 - task: Cache@2
   inputs:
@@ -28,8 +27,8 @@ steps:
     restoreKeys: 'yarn | "$(Agent.OS)"'
 - task: Cache@2
   inputs:
-    key: 'yarn | "$(Agent.OS)"'
-    path: $(Build.SourcesDirectory)/node_modules
+    key: 'npm | "$(Agent.OS)"'
+    path: $(Build.SourcesDirectory)/src/node_modules
     restoreKeys: 'yarn | "$(Agent.OS)"'
 
 
@@ -37,7 +36,6 @@ steps:
   inputs:
     script: |
       pwd
-      ls -lah node_modules
       du -h -d 1
 - task: CmdLine@2
   inputs:
@@ -48,5 +46,4 @@ steps:
     script: |
       env
       pwd
-      ls -lah
       du -h -d 1
