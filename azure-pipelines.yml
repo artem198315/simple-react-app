@@ -30,7 +30,8 @@ steps:
   inputs:
     script: |
       pwd
-      ls -lah
+      ls -lah node_modules
+      du -h -d 1
 - task: CmdLine@2
   inputs:
     script: 'npm install'
@@ -41,3 +42,4 @@ steps:
       env
       pwd
       ls -lah
+      du -h -d 1
