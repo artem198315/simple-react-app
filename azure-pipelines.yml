@@ -19,6 +19,7 @@ steps:
     script: |
       pwd
       ls -lah
+      ls -la $(Build.SourcesDirectory)
 
 - task: Cache@2
   inputs:
