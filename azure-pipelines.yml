@@ -31,6 +31,11 @@ steps:
     restoreKeys: 'yarn | "$(Agent.OS)"'
 
 - task: CmdLine@2
+  inputs:
+    script: |
+      pwd
+      ls -lah
+- task: CmdLine@2
   displayName: NPM INstall
   inputs:
     script: 'npm install'
