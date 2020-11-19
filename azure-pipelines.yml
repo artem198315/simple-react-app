@@ -10,12 +10,10 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- task: NodeTool@0
+- task: Cache@2
   inputs:
-    versionSpec: '10.x'
-  displayName: 'Install Node.js'
+    key: 'yarn|$(os.Agent)|yarn.lock'
+    path: '$(pipeline.workspace)/.yarn'
+    restoreKeys: 'yarn|$(os.Agent)'
 
-- script: |
-    npm install
-    npm run build
-  displayName: 'npm install and build'
+
