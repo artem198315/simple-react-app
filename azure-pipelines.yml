@@ -17,7 +17,7 @@ steps:
 - task: Cache@2
   inputs:
     key: 'yarn | "$(Agent.OS)"'
-    path: $(Pipeline.Workspace)/.cache/yarn
+    path: $(Pipeline.Workspace)/node_modules
     restoreKeys: 'yarn | "$(Agent.OS)"'
 
 - task: CmdLine@2
