@@ -14,12 +14,23 @@ steps:
   inputs:
     versionSpec: '10.x'
 
+- task: CmdLine@2
+  inputs:
+    script: |
+      pwd
+      ls -lah
+
 - task: Cache@2
   inputs:
     key: 'yarn | "$(Agent.OS)"'
     path: $(System.DefaultWorkingDirectory)/node_modules
     restoreKeys: 'yarn | "$(Agent.OS)"'
 
+- task: CmdLine@2
+  inputs:
+    script: |
+      pwd
+      ls -lah
 - task: CmdLine@2
   inputs:
     script: 'npm install'
@@ -29,4 +40,4 @@ steps:
     script: |
       env
       pwd
-      ls -la
+      ls -lah
